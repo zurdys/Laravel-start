@@ -1,11 +1,16 @@
 <x-layout title="Nova Série">
-    <form action="/series/salvar" method="post">
+    <form action="{{ isset($serie) ? route('series.update', $serie) : route('series.store') }}"
+          method="post">
         @csrf
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
-            <input type="text" id="nome" name="nome" class="form-control">
+            <input type="text"
+                   value="{{ $serie->nome ?? '' }}"
+                   id="nome"
+                   name="nome"
+                   class="form-control">
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">{{ isset($serie) ? 'Editar' : 'Adicionar' }}</button>
     </form>
 </x-layout>

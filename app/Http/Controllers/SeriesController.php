@@ -27,4 +27,23 @@ class SeriesController extends Controller
 
         return redirect('/series');
     }
+
+    public function edit(Serie $serie)
+    {
+        return view('series.create', compact('serie'));
+    }
+
+    public function update(Request $request, Serie $serie)
+    {
+        $serie->update(['nome' => $request->input('nome')]);
+
+        return redirect('/series');
+    }
+
+    public function destroy(Serie $serie)
+    {
+        $serie->delete();
+
+        return redirect('/series');
+    }
 }
