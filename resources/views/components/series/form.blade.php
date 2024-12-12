@@ -7,9 +7,9 @@
                 <label for="nome" class="form-label">Nome:</label>
                 <input type="text"
                        value="{{ $serie->nome ?? '' }}"
-                    id="nome"
-                    name="nome"
-                    class="form-control">
+                       id="nome"
+                       name="nome"
+                       class="form-control">
             </div>
             <div class="d-flex flex-column">
                 <label for="numero_temporadas" class="form-label">N° Temporadas:</label>

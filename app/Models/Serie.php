@@ -10,7 +10,8 @@ class Serie extends Model
     protected $fillable = [
         'nome',
         'favorito',
-        'numero-temporadas',
-        'episodios-temporada'
+        'numero_temporadas',
+        'episodios_temporada'
     ];
+
 }

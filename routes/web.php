@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/series');
 });
 
-Route::get('/series', [SeriesController::class, 'index']);
-Route::get('/series/criar', [SeriesController::class, 'create']);
-Route::post('/series/salvar', [SeriesController::class, 'store'])->name('series.store');
-Route::get('/series/editar/{serie}', [SeriesController::class, 'edit'])->name('series.edit');
-Route::post('/series/atualizar/{serie}', [SeriesController::class, 'update'])->name('series.update');
-Route::get('/series/remover/{serie}', [SeriesController::class, 'destroy'])->name('series.destroy');
-//Route::get('/series/favoritos/', [SeriesController::class, 'show'])->name('series.show');
-Route::get('/series/favoritar/{serie}', [SeriesController::class, 'favoritar'])->name('series.favoritar');
+//Route::resource('/series', SeriesController::class);
+
+Route::controller(SeriesController::class)->group(function () {
+    Route::get('/series','index')->name('series.index');
+    Route::get('/series/criar','create')->name('series.create');
+    Route::post('/series/salvar','store')->name('series.store');
+    Route::get('/series/editar/{series}','edit')->name('series.edit');
+    Route::post('/series/atualizar/{serie}','update')->name('series.update');
+    Route::post('/series/remover/{series}','destroy')->name('series.destroy');
+    Route::get('/series/favoritos/','show')->name('series.show');
+    Route::get('/series/favoritar/{series}','favoritar')->name('series.favoritar');
+});
