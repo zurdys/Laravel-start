@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class SeriesController extends Controller
 {
@@ -29,14 +30,14 @@ class SeriesController extends Controller
 
     public function edit(Serie $series)
     {
-        return view('series.create', compact('series'));
+        return view('series.edit', compact('series'));
     }
 
     public function update(Request $request, Serie $series)
     {
-        $series->update(['nome' => $request->input('nome')]);
+        $series->update($request->all());
 
-        return redirect('/series');
+        return to_route('series.index')->with('mensagem.sucesso', "Série $series->nome atualizada com sucesso");
     }
 
     public function destroy(Serie $series)
