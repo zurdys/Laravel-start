@@ -9,10 +9,8 @@ class Serie extends Model
 //    protected $table = 'series';
     protected $fillable = [
         'nome',
-        'favorito'
-    ];
-
-    protected $casts = [
-        'favorito' => 'boolean'
+        'favorito',
+        'numero-temporadas',
+        'episodios-temporada'
     ];
 }

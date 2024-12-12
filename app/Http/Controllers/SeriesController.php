@@ -20,11 +20,14 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        $nomeSerie = $request->input('nome');
+        $dadosSerie = $request->all('nome', 'numero-temporadas', 'episodios-temporada');
         $serie = new Serie();
-        $serie->nome = $nomeSerie;
+        $serie->nome = $dadosSerie['nome'];
+        $serie->numero_temporadas = $dadosSerie['numero-temporadas'];
+        $serie->episodios_temporada = $dadosSerie['episodios-temporada'];
         $serie->save();
 
+//        $serie = Serie::create($request->only('nome', 'numero-temporadas', 'episodios-temporada')); GPT
         return redirect('/series');
     }
 

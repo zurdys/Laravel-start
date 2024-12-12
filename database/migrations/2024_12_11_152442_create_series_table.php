@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 128);
             $table->boolean('favorito')->default(false);
+            $table->integer('numero_temporadas');
+            $table->integer('episodios_temporada');
             $table->timestamps();
         });
     }
