@@ -46,4 +46,11 @@ class SeriesController extends Controller
 
         return redirect('/series');
     }
+
+    public function favoritar(Serie $serie)
+    {
+        $serie->update(['favorito' => !$serie->favorito]);
+
+        return redirect('/series');
+    }
 }

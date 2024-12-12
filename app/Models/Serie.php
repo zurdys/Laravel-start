@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Serie extends Model
 {
 //    protected $table = 'series';
-    protected $fillable = ['nome'];
+    protected $fillable = [
+        'nome',
+        'favorito'
+    ];
+
+    protected $casts = [
+        'favorito' => 'boolean'
+    ];
 }
