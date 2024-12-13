@@ -1,15 +1,15 @@
 <form action="{{ $action }}" method="post">
     @csrf
 
-    @isset($series->nome)
+    @if($update)
         @method('PUT')
-    @endisset
+    @endif
     <div class="mb-3 d-flex gap-3">
         <div class="d-flex flex-column flex-grow-1">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text"
-                   {{--                   value="{{ $serie->nome ?? '' }}"--}}
-                   @isset($series->nome)value="{{ $series->nome }}" @endisset
+{{--                                      value="{{ old('nome') ?? $series->nome ?? ''  }}"--}}
+                   @isset($nome)value="{{ $nome }}" @endisset
                    id="nome"
                    name="nome"
                    class="form-control">

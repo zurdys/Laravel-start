@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,7 @@ class SeriesController extends Controller
         return view('series.create');
     }
 
-    public function store(Request $request)
+    public function store(SeriesFormRequest $request)
     {
         $serie = Serie::create($request->all());
 //        $serie = Serie::create($request->only('nome', 'numero-temporadas', 'episodios-temporada')); GPT
@@ -30,10 +31,11 @@ class SeriesController extends Controller
 
     public function edit(Serie $series)
     {
+        dd($series->temporadas);
         return view('series.edit', compact('series'));
     }
 
-    public function update(Request $request, Serie $series)
+    public function update(SeriesFormRequest $request, Serie $series)
     {
         $series->update($request->all());
 

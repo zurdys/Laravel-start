@@ -16,6 +16,7 @@
                 <a href="{{ route('series.edit', $serie->id) }}" class="btn btn-danger btn-sm"><i class="bi bi-pencil-square text-primary" title="Editar"></i></a>
                 <form action="{{ route('series.destroy', $serie->id) }}" method="post">
                     @csrf
+                    @method('DELETE')
                     <button class="btn btn-danger btn-sm">
                         <i class="bi bi-trash-fill" title="Remover"></i>
                     </button>
