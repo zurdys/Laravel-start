@@ -1,6 +1,39 @@
 <x-layout title="Nova Série">
-    <x-series.form :action="route('series.store')" :nome="old('nome')" :update="false" />
-{{--    <form action="{{ isset($series) ? route('series.update', $series) : route('series.store') }}"--}}
+    <form action="{{ route('series.store') }}" method="post">
+        @csrf
+
+        <div class="mb-3 d-flex gap-3">
+            <div class="d-flex flex-column flex-grow-1">
+                <label for="nome" class="form-label">Nome:</label>
+                <input type="text"
+{{--                       value="{{ old('nome') ?? $series->nome ?? ''  }}"--}}
+                       value="{{ old('nome') ?? '' }}"
+                       id="nome"
+                       name="nome"
+                       class="form-control">
+            </div>
+            <div class="d-flex flex-column">
+                <label for="numero_temporadas" class="form-label">N° Temporadas:</label>
+                <input type="number"
+                       @isset($series->numero_temporadas)value="{{ $series->numero_temporadas }}" @endisset
+                       id="numero_temporadas"
+                       name="numero_temporadas"
+                       class="form-control">
+            </div>
+            <div>
+                <label for="episodios_temporada" class="form-label">Eps / Temporada:</label>
+                <input type="number"
+                       @isset($series->episodios_temporada)value="{{ $series->episodios_temporada }}" @endisset
+                       id="episodios_temporada"
+                       name="episodios_temporada"
+                       class="form-control">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ isset($series) ? 'Editar' : 'Adicionar' }}</button>
+    </form>
+
+    {{--    <form action="{{ isset($series) ? route('series.update', $series) : route('series.store') }}"--}}
 {{--          method="post">--}}
 {{--        @csrf--}}
 {{--        <div class="mb-3 d-flex gap-3" >--}}

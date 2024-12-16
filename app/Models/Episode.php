@@ -8,7 +8,7 @@ class Episode extends Model
 {
     public $timestamps = false;
 
-    public function season()
+    public function seasons()
     {
         return $this->belongsTo(Season::class);
     }

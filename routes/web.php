@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeasonsController;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -21,3 +22,5 @@ Route::controller(SeriesController::class)->group(function () {
     Route::get('/series/favoritos/','show')->name('series.show');
     Route::get('/series/favoritar/{series}','favoritar')->name('series.favoritar');
 });
+
+Route::get('/series/{series}/seasons', [SeasonsController::class, 'index'])->name('seasons.index');
